@@ -1,0 +1,152 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+header {
+    text-align: center;
+
+    background-image: url("../img/mobile/ovalo-header-mobile.svg"), url("../img/circle.svg");
+    background-repeat: no-repeat;
+    background-position: left 0px top 91px, right 0 top 219px;
+    
+    @include m.breakpoint(v.$bp-tablet) {        
+        background-image: url("../img/tablet/ovalo-header-tablet.svg"), url("../img/circle.svg"), url("../img/tablet/photo-tablet.png");
+        background-repeat: no-repeat;
+        background-size: auto, auto, contain;
+        background-position: left 0px top 68px ,right 0 top 408px, right 0 top 0;
+        text-align: left;
+    }
+
+    @include m.breakpoint(v.$bp-desktop) {
+        background-image: url("../img/desktop/ovalo-header-desktop.svg"), url("../img/desktop/circle-header-desktop.svg"), url("../img/desktop/photo-desktop.png");
+        background-repeat: no-repeat;
+        background-size: auto, auto, 28% 85%;
+        background-position: left 0px top 100px, right 360px top 470px, right 87px top 0;
+        text-align: left;
+        padding-bottom: 100px;
+    }
+
+    .header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+
+        @include m.breakpoint(v.$bp-tablet) {
+            justify-content: space-between;
+            flex-direction: row;
+            margin-bottom: 70px;
+        }
+
+        @include m.breakpoint(v.$bp-desktop) {
+            margin-bottom: 100px;
+        }
+
+        &-nav {
+            ul {
+                @include m.reset-list();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 25px;
+
+                a {
+                    img:last-child {
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        img:first-child {
+                            display: none;
+                        }
+
+                        img:last-child {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .hero {
+        margin-bottom: 80px;
+
+        @include m.breakpoint(v.$bp-tablet) {
+            width: 60%;
+            margin-bottom: 60px;
+        }
+
+        @include m.breakpoint(v.$bp-desktop) {
+            width: 80%;
+            margin-bottom: 100px;
+        }
+
+
+        img {
+            background-color: rgba($color: v.$terciary-color, $alpha: 0.2);
+            @include m.breakpoint(v.$bp-tablet) {
+                display: none;
+            }
+        }
+
+        &-title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: -1.14px;
+            margin-top: 40px;
+            margin-bottom: 24px;
+
+            @include m.breakpoint(v.$bp-tablet) {
+                font-size: 72px;
+                line-height: 72px;
+                letter-spacing: -2.05px;
+                margin-bottom: 43px;
+            }
+
+            @include m.breakpoint(v.$bp-desktop) {
+                font-size: 88px;
+                line-height: 88px;
+                letter-spacing: -2.5px;
+                margin-bottom: 66px;
+            }
+            
+            span {
+                text-decoration: underline;
+                text-decoration-color: v.$secondary-color;
+            }
+        }
+
+        &-subtitle {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            margin-bottom: 24px;
+            color: v.$grey-light-color;;
+
+            @include m.breakpoint(v.$bp-tablet) {
+                font-size: 18px;
+                line-height: 28px;
+                margin-bottom: 34px;
+            }
+
+            @include m.breakpoint(v.$bp-desktop) {
+                margin-bottom: 66px;
+                width: 55%;
+            }
+        }
+
+        &-button {
+            @include m.button();
+
+            &:hover {
+                @include m.button-active();
+            }
+        }
+    }
+}

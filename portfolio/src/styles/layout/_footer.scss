@@ -1,0 +1,194 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+footer {
+    background-color: v.$terciary-color;
+    background-image: url("../img/mobile/ovalo-footer-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: left 0px top 439px;
+
+    @include m.breakpoint(v.$bp-tablet) {
+        background-image: url("../img/tablet/ovalo-footer-tablet.svg");
+        background-repeat: no-repeat;
+        background-position: left 0px top 553px;
+    }
+
+    @include m.breakpoint(v.$bp-desktop) {
+        background-image: url("../img/desktop/ovalo-footer-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: left 0px top 301px;
+    }
+
+    .form {
+        padding-bottom: 87px;
+        border-bottom: 1px solid v.$grey-light-color;
+
+        @include m.breakpoint(v.$bp-tablet) {
+            padding-left: 130px;
+            padding-right: 130px;
+        }
+
+        @include m.breakpoint(v.$bp-desktop) {
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 84px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 220px;
+            align-items: start;
+        }
+
+        &-contact {
+            text-align: center;
+            padding-top: 60px;
+            padding-bottom: 50px;
+
+            @include m.breakpoint(v.$bp-desktop) {
+                padding-top: 0px;
+                text-align: left;
+            }
+
+            h2 {
+                font-size: 40px;
+                line-height: 40px;
+                font-weight: 700;
+                letter-spacing: -1.14px;
+                margin-top: 0;
+                margin-bottom: 20px;
+
+                @include m.breakpoint(v.$bp-tablet) {
+                    font-size: 72px;
+                    line-height: 72px;
+                    letter-spacing: -2.05px;
+                }
+            }
+            
+            p {
+                font-size: 16px;
+                line-height: 26px;
+                font-weight: 500;
+                color: v.$grey-light-color;
+            }
+        }
+
+        &-form {
+            div {
+                position: relative;
+            }
+
+            input, textarea {
+                width: 100%;
+                background-color: v.$terciary-color;
+                border: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                margin-bottom: 32px;
+                padding-bottom: 16px;
+            }
+
+            textarea {
+                overflow: hidden;
+                background-color: rgba(255, 255, 255, 0);
+            }
+
+            input:focus, textarea:focus {
+                outline: none;
+                border-bottom: 1px solid v.$secondary-color;
+            }
+
+            span {
+                display: none;
+                color: v.$error-color;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 16px;
+                letter-spacing: -0.17px;
+                position: absolute;
+            }
+
+            input::placeholder, textarea::placeholder {
+                font-family: v.$font;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 26px;
+                letter-spacing: -0.22px;
+                color: v.$white-color;
+                opacity: 50%;
+            }
+
+            input:invalid, textarea:invalid {
+                border-bottom: 1px solid v.$error-color;
+            }
+
+            input:focus:invalid ~ span, textarea:focus:invalid ~ span {
+                display: block;
+                top: 40px;
+                right: 0;
+            }
+
+            .button {
+                text-align: right;
+
+                button {
+                    border: 0;
+                    @include m.button();
+                    background-color: v.$terciary-color;
+                }
+    
+                button:hover {
+                    cursor: pointer;
+                    @include m.button-active();
+                }
+            }
+        }
+    }
+
+    .footer {
+        padding-top: 39px;
+        padding-bottom: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+
+        @include m.breakpoint(v.$bp-tablet) {
+            justify-content: space-between;
+            flex-direction: row;
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+
+        @include m.breakpoint(v.$bp-desktop) {
+            padding-top: 47px;
+            padding-bottom: 92px;
+        }
+
+        &-nav {
+            ul {
+                @include m.reset-list();
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 25px;
+
+                a {
+                    img:last-child {
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        img:first-child {
+                            display: none;
+                        }
+
+                        img:last-child {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

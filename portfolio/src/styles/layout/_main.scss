@@ -1,0 +1,210 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+main {
+    background-image: url("../img/mobile/ovalo-main-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: right 0px top 656px;
+
+    @include m.breakpoint(v.$bp-tablet) {
+        background-image: url("../img/tablet/ovalo-main-tablet.svg");
+        background-repeat: no-repeat;
+        background-position: right 0px top 333px;
+    }
+
+    @include m.breakpoint(v.$bp-desktop) {
+        background-image: url("../img/desktop/ovalo-main-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: right 0px top 259px;
+        margin-bottom: 100px;
+    }
+
+    .experience {
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-top: 1px solid v.$grey-light-color;
+        border-bottom: 1px solid v.$grey-light-color;
+
+        @include m.breakpoint(v.$bp-tablet) {
+            display: grid;
+            flex-wrap: wrap;
+            grid-template-columns: 1fr 1fr;
+            text-align: left;
+            border-bottom: none;
+        }
+
+        @include m.breakpoint(v.$bp-desktop) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &-item {
+            &-title {
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 40px;
+                letter-spacing: -1px;
+                margin-bottom: 0;
+
+                @include m.breakpoint(v.$bp-desktop) {
+                    font-size: 48px;
+                    line-height: 56px;
+                    letter-spacing: -1.5px;
+                }
+            }
+
+            &-subtitle {
+                color: v.$grey-light-color;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 26px;
+                margin-top: 10px;
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    .projects {
+        padding-top: 60px;
+
+        &-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+
+            @include m.breakpoint(v.$bp-tablet) {
+                align-items: center;
+            }
+
+            &--title {
+                font-size: 40px;
+                line-height: 40px;
+                font-weight: 700;
+                letter-spacing: -1.14px;
+                margin-top: 0;
+                margin-bottom: 40px;
+
+                @include m.breakpoint(v.$bp-tablet) {
+                    font-size: 72px;
+                    line-height: 72px;
+                    letter-spacing: -2.05px;
+                }
+
+                @include m.breakpoint(v.$bp-desktop) {
+                    font-size: 88px;
+                    line-height: 88px;
+                    letter-spacing: -2.5px;
+                }
+            }
+
+            &--button {
+                @include m.button();
+
+                @include m.breakpoint(v.$bp-tablet) {
+                    position: relative;
+                    bottom: 4px;
+                }
+
+                &:hover {
+                    @include m.button-active();
+                }
+            }
+        }
+
+        &-projects {
+            padding-bottom: 40px;
+
+            @include m.breakpoint(v.$bp-tablet) {
+                display: grid;
+                flex-wrap: wrap;
+                grid-template-columns: 1fr 1fr;
+                gap: 22px;
+            }
+
+            @include m.breakpoint(v.$bp-desktop) {
+                gap: 28px;
+            }
+
+            &--project {
+                margin-bottom: 40px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+
+                @include m.breakpoint(v.$bp-tablet) {
+                    margin-bottom: 60px;
+                }
+
+                @include m.breakpoint(v.$bp-desktop) {
+                    margin: 0;
+
+                    img {
+                        width: 100%;
+                    }
+
+                    &:hover {
+                        nav {
+                            position: absolute;
+                            display: block;
+                            transform: translate(190px, -330px);
+                        }
+
+                        img {
+                            opacity: 0.2;
+                        }
+                    }
+                }
+
+                &---title {
+                    font-size: 24px;
+                    line-height: 32px;
+                    font-weight: 700;
+                    margin-top: 20px;
+                    margin-bottom: 7px;
+                }
+
+                &---subtitle {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 18px;
+
+                    p {
+                        font-size: 18px;
+                        line-height: 28px;
+                        font-weight: 500;
+                        color: v.$grey-light-color;
+                        margin-top: 0;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                &---nav {
+                    @include m.breakpoint(v.$bp-desktop) {
+                        display: none;
+                    }
+
+                    ul {
+                        @include m.reset-list();
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        gap: 32px;
+
+                        @include m.breakpoint(v.$bp-desktop) {
+                            flex-direction: column;
+                        }
+                    }
+
+                    a {
+                        @include m.button();
+                    }
+
+                    a:hover {
+                        @include m.button-active();
+                    }
+                }
+            }
+        }
+    }
+}

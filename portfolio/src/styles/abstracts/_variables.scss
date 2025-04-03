@@ -1,0 +1,21 @@
+// Breakpoints
+
+$bp-tablet: 768px;
+$bp-desktop: 1200px;
+
+// Colors
+
+$primary-color: #151515;
+$secondary-color: #4EE1A0;
+$terciary-color: #242424;
+$grey-light-color: #D9D9D9;
+$white-color: #FFFFFF;
+$error-color: #FF6F5B;
+
+// Typography
+
+$font: "Space Grotesk", sans-serif;
+
+// Gradients
+
+$linear-gradient: linear-gradient(to top bottom, $terciary-color 0.01%, $terciary-color);
